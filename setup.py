@@ -2,7 +2,8 @@ import sys
 from cx_Freeze import setup, Executable
 
 build_exe_options = {"packages": ["os"],
-                     "excludes": ["tkinter"]}
+                     "excludes": ["tkinter"],
+                     "include_files": ["assets", "lib", "ui", "constant"]}
 
 base = None
 if sys.platform == "win32":
@@ -14,5 +15,5 @@ setup(name="DUNE mail suivi production",
       options={"build_exe": build_exe_options},
       executables=[Executable(script="main.py",
                               base=base,
-                              icon="mail.ico",
+                              icon="assets/mail.ico",
                               targetName="DUNE mail rapport production.exe")])
