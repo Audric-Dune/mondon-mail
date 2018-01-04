@@ -2,6 +2,10 @@
 # -*- coding: utf-8 -*-
 
 import sys
+import smtplib
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+from email.mime.application import MIMEApplication
 
 from PyQt5.QtWidgets import QApplication
 from PyQt5.QtGui import QIcon

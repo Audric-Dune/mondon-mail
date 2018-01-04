@@ -44,10 +44,10 @@ class MainThread(QThread):
                     go_send_mail()
                     we = True
                     while we:
-                        self.end = timestamp_after_day_ago(now,
-                                                      day_ago=1,
-                                                      hour=SENDING_TIME_HOURS,
-                                                      min=SENDING_TIME_MIN)
+                        self.end = timestamp_after_day_ago(self.end,
+                                                           day_ago=1,
+                                                           hour=SENDING_TIME_HOURS,
+                                                           min=SENDING_TIME_MIN)
                         we = self.is_weekend(self.end)
 
                     self.ON_SEND_COMPLETED.emit(self.end)
