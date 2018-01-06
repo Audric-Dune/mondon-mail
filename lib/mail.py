@@ -24,7 +24,7 @@ def go_send_mail():
         # Ajout le chemin du .exe du programme mondon-client
         os.chdir("I:\Programme mondon\mondon-client_2")
         # Exécute en tâche de fond le programme
-        os.system("start /B DUNE_production_bobines.exe")
+        os.system("start /B DUNE_production_bobines.exe --rapport")
         # Attend 10s pour être sur que le pdf est généré
         time.sleep(10)
         # Faire le programme mondon-client
