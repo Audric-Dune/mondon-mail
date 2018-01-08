@@ -24,20 +24,17 @@ def go_send_mail():
         # Ajout le chemin du .exe du programme mondon-client
         os.chdir("I:\Programme mondon\mondon-client_2")
         # Exécute en tâche de fond le programme
-        os.system("start /B DUNE_production_bobines.exe --rapport")
-        # Attend 10s pour être sur que le pdf est généré
-        time.sleep(10)
-        # Faire le programme mondon-client
-        os.system("taskkill /im DUNE_production_bobines.exe")
+        os.system("start DUNE_production_bobines.exe --rapport")
     generate_rapport()
+    time.sleep(30)
     send_mail()
 
 
 def send_mail():
     msg = MIMEMultipart()
+    msg['Subject'] = "Rapport production de bobines du {}".format(timestamp_to_date(timestamp_now()))
     msg['From'] = 'audric.perrin@dune-sa.fr'
-    msg['To'] = 'audric.perrin@dune-sa.fr'
-    msg['Subject'] = "Rapport production bobine du {}".format(timestamp_to_date(timestamp_now()))
+    msg['To'] = 'audric.perrin@dune-sa.fr,nicolas.cormier@dune-sa.fr'
     message =\
 """Bonjour,
 
@@ -65,5 +62,5 @@ www.dune-sa.fr
     mailserver.starttls()
     mailserver.ehlo()
     mailserver.login('audric.perrin@dune-sa.fr', 'Loda6027')
-    mailserver.sendmail('audric.perrin@dune-sa.fr', 'audric.perrin@dune-sa.fr', msg.as_string())
+    mailserver.sendmail(msg["From"], msg["To"].split(","), msg.as_string())
     mailserver.quit()
