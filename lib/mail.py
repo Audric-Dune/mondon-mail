@@ -34,7 +34,7 @@ def send_mail():
     msg = MIMEMultipart()
     msg['Subject'] = "Rapport production de bobines du {}".format(timestamp_to_date(timestamp_now()))
     msg['From'] = 'audric.perrin@dune-sa.fr'
-    msg['To'] = 'audric.perrin@dune-sa.fr,nicolas.cormier@dune-sa.fr'
+    msg['To'] = 'audric.perrin@dune-sa.fr,nicolas.cormier@dune-sa.fr,hd321@orange.fr,nat.durif@dune-sa.fr'
     message =\
 """Bonjour,
 
